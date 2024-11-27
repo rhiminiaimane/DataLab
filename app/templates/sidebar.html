@@ -295,11 +295,6 @@ img {
   .header__logo {
     display: block;
   }
-  .header__img {
-    width: 30px;
-    height: 30px;
-    order: 1;
-  }
   .nav {
     left: 0;
     padding: 1.2rem 1.5rem 0;
@@ -357,9 +352,10 @@ img {
 }
 
 .header__img {
-    width: 30px; /* Adjust as needed */
-    height: 30px; /* Adjust as needed */
+    width: 25px; /* Adjust as needed */
+    height: 25px; /* Adjust as needed */
     border-radius: 50%;
+    order: 1;
 }
 
 .header__username {
@@ -402,7 +398,7 @@ img {
     
                     <div class="nav__list">
                         <div class="nav__items">
-                            <h3 class="nav__subtitle">Profile</h3>
+                            <h3 class="nav__subtitle">Interface Utilisateur</h3>
     
                             <a href="#" class="nav__link active">
                                 <i class='bx bx-home nav__icon' ></i>
@@ -464,10 +460,10 @@ img {
                     </div>
                 </div>
 
-                <a href="#" class="nav__link nav__logout">
-                    <i class='bx bx-log-out nav__icon' ></i>
-                    <span class="nav__name">Log Out</span>
-                </a>
+                <a href="{% url 'logout' %}" class="nav__link nav__logout">
+                  <i class='bx bx-log-out nav__icon'></i>
+                  <span class="nav__name">Log Out</span>
+              </a>              
             </nav>
         </div>
 
