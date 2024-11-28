@@ -18,3 +18,76 @@ def authView(request):
     else:
         form = UserCreationForm()
     return render(request, "registration/signup.html", {"form":form}) 
+
+from django.http import HttpResponse
+from django.core.files.storage import FileSystemStorage
+import os
+
+@login_required
+def upload_file(request):
+    if request.method == "POST" and request.FILES["file"]:
+        file = request.FILES["file"]
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        file_url = fs.url(filename)
+        return HttpResponse(f"File uploaded at {file_url}")
+    return render(request, "page1.html")
+
+@login_required
+def create_dataset(request):
+    # Add logic for creating datasets
+    return HttpResponse("Dataset created successfully!")
+
+@login_required
+def export_dataset(request):
+    # Add logic for exporting datasets
+    response = HttpResponse(content_type="application/zip")
+    response["Content-Disposition"] = "attachment; filename=datasets.zip"
+    # Include dataset export logic here
+    return response
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+import pandas as pd
+from io import StringIO
+
+@login_required
+def upload_and_display(request):
+    dataset_name = None
+    table = None
+    describe = None
+    info = None
+
+    if request.method == "POST" and "dataset" in request.FILES:
+        dataset = request.FILES["dataset"]
+        dataset_name = dataset.name
+
+        try:
+            # Read the uploaded CSV file
+            df = pd.read_csv(dataset)
+
+            # Generate dataset details
+            table = {
+                "columns": df.columns.tolist(),
+                "values": df.head(10).values.tolist(),  # Display first 10 rows
+            }
+            describe = df.describe().to_string()
+            
+            # Capture info as a string
+            buffer = StringIO()
+            df.info(buf=buffer)
+            info = buffer.getvalue()
+
+        except Exception as e:
+            return render(request, "page1.html", {"error": f"Error processing file: {e}"})
+
+    return render(
+        request,
+        "page1.html",
+        {
+            "dataset_name": dataset_name,
+            "table": table,
+            "describe": describe,
+            "info": info,
+        },
+    )

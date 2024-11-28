@@ -1,2 +1,56 @@
-{% include 'sidebar.html' %}
-<h1>Welcome</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Upload and Analyze Your Dataset</h1>
+
+<!-- File Upload Form -->
+<form action="{% url 'upload_and_display' %}" method="POST" enctype="multipart/form-data" style="margin-bottom: 20px;">
+    {% csrf_token %}
+    <label for="dataset">Nom du dataset:</label>
+    <input type="file" name="dataset" id="dataset" accept=".csv">
+    <button type="submit">Upload</button>
+</form>
+
+<!-- Dataset Details Section -->
+{% if dataset_name %}
+    <h2>Dataset: {{ dataset_name }}</h2>
+
+    <!-- Data Preview -->
+    <div style="overflow-x: auto; margin-bottom: 20px;">
+        <table border="1" style="width: 100%;text-align: center;">
+            <thead>
+                <tr>
+                    {% for column in table.columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table.values %}
+                    <tr>
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Describe and Infos Section -->
+    <div style="display: flex; justify-content: space-between; gap: 20px;">
+        <!-- Describe Section -->
+        <div style="flex: 1; border: 1px solid #ddd; padding: 10px;">
+            <h3>Describe</h3>
+            <pre style="white-space: pre-wrap;">{{ describe }}</pre>
+        </div>
+
+        <!-- Infos Section -->
+        <div style="flex: 1; border: 1px solid #ddd; padding: 10px;">
+            <h3>Infos</h3>
+            <pre style="white-space: pre-wrap;">{{ info }}</pre>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
