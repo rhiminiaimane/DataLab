@@ -1,0 +1,16 @@
+1. interface user 
+	Create dataset
+	Import dataset
+	Extraire a partir autre source
+2. Visualisation
+3. Gestion des données
+	Preparation
+	Transformation
+	nettoyage (Valeurs manquants)
+	normalisation
+4. Algorithmes de ML
+	Choisir un algo
+	Validation des modeles (metrics)
+	Visualiastion des resulats
+	Exportations des resulats comme un rappot
+5. Documentations et tuto d'utilisation
