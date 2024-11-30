@@ -400,25 +400,18 @@ img {
                         <div class="nav__items">
                             <h3 class="nav__subtitle">1</h3>
     
-                            <a href="#" class="nav__link active">
+                            <a href="{% url 'upload_and_display' %}" class="nav__link active">
                                 <i class='bx bx-home nav__icon' ></i>
-                                <span class="nav__name">Home</span>
+                                <span class="nav__name">Donneés</span>
                             </a>
                             
                             <div class="nav__dropdown">
-                                <a href="#" class="nav__link">
+                                <a href="{% url 'visualize' %}" class="nav__link">
                                     <i class='bx bx-user nav__icon' ></i>
-                                    <span class="nav__name">Profile</span>
-                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                    <span class="nav__name">Visualize</span>
                                 </a>
 
-                                <div class="nav__dropdown-collapse">
-                                    <div class="nav__dropdown-content">
-                                        <a href="#" class="nav__dropdown-item">Passwords</a>
-                                        <a href="#" class="nav__dropdown-item">Mail</a>
-                                        <a href="#" class="nav__dropdown-item">Accounts</a>
-                                    </div>
-                                </div>
+            
                             </div>
 
                             <a href="#" class="nav__link">

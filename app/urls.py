@@ -13,8 +13,7 @@ urlpatterns = [
 
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    path('upload/', views.upload_file, name='upload_file'),
-    path('create/', views.create_dataset, name='create_dataset'),
-    path('export/', views.export_dataset, name='export_dataset'),
+
     path('upload_and_display/', views.upload_and_display, name='upload_and_display'),
+    path('visualize/', views.visualize, name='visualize'),
 ]
