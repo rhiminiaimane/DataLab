@@ -1,194 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home - DataLab</title>   
-    <style>
-        /* Imports */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-        /* Reset and Basic Styles */
-        * {
-        padding: 0;
-        margin: 0;
-        }
-        body {
-        font-family: 'Montserrat', sans-serif;
-        color: #263238;
-        background: whitesmoke;
-        }
-
-        /* Typography */
-        .bold-text {
-        font-weight: 700;
-        color: #C51919;
-        }
-        .text {
-            font-size: 14px;
-            color: #263238;
-            font-weight: 500;
-            line-height: 1.5;
-
-        }
-        .section-title {
-            text-align: center;
-            color: black;
-            margin-bottom: 40px;
-        }
-
-        /* Layout - Centered Content */
-        .centered-content {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        .centered-content h1 {
-        margin: 120px 0 50px;
-        font-size: 2.5rem;
-        font-weight: 400;
-        }
-        .centered-content p:nth-of-type(1) {
-        font-size: 22px;
-        font-weight: 500;
-        margin-top: 20px;
-        }
-        .centered-content p:nth-of-type(2) {
-        font-size: 16px;
-        margin-top: 20px;
-        }
-
-        /* Button Styles */
-        .cssbuttons-io-button {
-        background: #C51919;
-        color: white;
-        font-family: inherit;
-        font-size: 17px;
-        font-weight: 500;
-        padding: 0.35em 3.3em 0.35em 1.2em;
-        border-radius: 0.9em;
-        border: none;
-        display: flex;
-        align-items: center;
-        box-shadow: inset 0 0 1.6em -0.6em #714da6;
-        cursor: pointer;
-        margin: 20px 0 70px;
-        position: relative;
-        height: 2.8em;
-        text-decoration: none;
-        }
-        .cssbuttons-io-button .icon {
-        background: white;
-        margin-left: 1em;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 2.2em;
-        width: 2.2em;
-        border-radius: 0.7em;
-        box-shadow: 0.1em 0.1em 0.6em 0.2em #710303;
-        right: 0.3em;
-        transition: all 0.3s;
-        }
-        .cssbuttons-io-button:hover .icon {
-        width: calc(100% - 0.6em);
-        }
-        .cssbuttons-io-button .icon svg {
-        width: 1.1em;
-        transition: transform 0.3s;
-        color: #6a0303;
-        }
-        .cssbuttons-io-button:hover .icon svg {
-        transform: translateX(0.1em);
-        }
-        .cssbuttons-io-button:active .icon {
-        transform: scale(0.95);
-        }        
-    </style> 
-</head>
-<body>
-    {% include 'navbar.html' %}
-    <div class="centered-content">
-        <h1>Transformez vos données avec <span class="bold-text">DataLab</span> 💻 !</h1>
-        <p>Gérez et analysez vos données facilement,<br> sans besoin d'être un expert en machine learning !</p><br><br>
-        <a href="/accounts/login/" class="cssbuttons-io-button">
-            Get started
-            <div class="icon">
-                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </a>        
-    </div><br>
-    <div style="text-align: center;">
-        Soyez parmi les premiers à découvrir l'avenir de l'analyse de données et du machine learning.
-    </div>
-    <br><br><hr><br><br>
-    
-    <div>
-        <h2 class="section-title">Problème</h2>
-        <div style="display: flex; justify-content: space-around; align-items: flex-start; padding: 20px; flex-wrap: wrap;">
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Complexité des algorithmes</h3><br>
-                <p class="text">
-                    Beaucoup d'utilisateurs ont du mal à implémenter et comprendre des algorithmes
-                    complexes de machine learning comme SVM, les réseaux de neurones ou les arbres
-                    de décision, ce qui entraîne une perte d'informations précieuses.
-                </p>
-            </div>
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Manque de visualisation</h3><br>
-                <p class="text">
-                    L'absence de représentations graphiques claires des données et des résultats
-                    rend difficile leur interprétation et complique la prise de décision.
-                </p>
-            </div>
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Charge de préparation des données</h3><br>
-                <p class="text">
-                    La préparation, le nettoyage et la transformation des données prennent du temps
-                    et nécessitent l'utilisation de plusieurs outils ainsi que des compétences spécifiques.
-                </p>
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Home - DataLab</title>
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="centered-content">
+            <h1>Transformez vos données avec <span class="bold-text">DataLab</span> 💻 !</h1>
+            <p>Gérez et analysez vos données facilement,<br> sans besoin d'être un expert en machine learning !</p><br><br>
+            <a href="/accounts/login/" class="cssbuttons-io-button">
+                Get started
+                <div class="icon">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+                    </svg>
+                </div>
+            </a>        
+        </div><br>
+        <div style="text-align: center;">
+            Soyez parmi les premiers à découvrir l'avenir de l'analyse de données et du machine learning.
+        </div>
+        <br><br><hr><br><br>
+        
+        <div>
+            <h2 class="section-title">Problème</h2>
+            <div style="display: flex; justify-content: space-around; align-items: flex-start; padding: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Complexité des algorithmes</h3><br>
+                    <p class="text">
+                        Beaucoup d'utilisateurs ont du mal à implémenter et comprendre des algorithmes
+                        complexes de machine learning comme SVM, les réseaux de neurones ou les arbres
+                        de décision, ce qui entraîne une perte d'informations précieuses.
+                    </p>
+                </div>
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Manque de visualisation</h3><br>
+                    <p class="text">
+                        L'absence de représentations graphiques claires des données et des résultats
+                        rend difficile leur interprétation et complique la prise de décision.
+                    </p>
+                </div>
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Charge de préparation des données</h3><br>
+                    <p class="text">
+                        La préparation, le nettoyage et la transformation des données prennent du temps
+                        et nécessitent l'utilisation de plusieurs outils ainsi que des compétences spécifiques.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div>
-        <h2 class="section-title">Solution</h2>
-        <div style="display: flex; justify-content: space-around; align-items: flex-start; padding: 20px; flex-wrap: wrap;">
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Interface intuitive</h3><br>
-                <p class="text">
-                    Une interface conviviale qui permet aux utilisateurs d'importer, nettoyer et traiter leurs ensembles de données facilement.
-                </p>
-            </div>
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Visualisation graphique</h3><br>
-                <p class="text">
-                    Des outils interactifs pour représenter visuellement les données et comparer les performances des modèles.
-                </p>
-            </div>
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Algorithmes intégrés</h3><br>
-                <p class="text">
-                    Une bibliothèque de modèles de machine learning (régression, k-means, random forests, réseaux de neurones, etc.) prêts à être utilisés pour simplifier l’analyse.
-                </p>
-            </div>
-            <!-- Add the new section here -->
-            <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
-                <h3 class="bold-text">Exportation simplifiée</h3><br>
-                <p class="text">
-                    Des fonctionnalités pour exporter les résultats, les modèles entraînés et les visualisations pour un partage ou une utilisation future.
-                </p>
+        <div>
+            <h2 class="section-title">Solution</h2>
+            <div style="display: flex; justify-content: space-around; align-items: flex-start; padding: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Interface intuitive</h3><br>
+                    <p class="text">
+                        Une interface conviviale qui permet aux utilisateurs d'importer, nettoyer et traiter leurs ensembles de données facilement.
+                    </p>
+                </div>
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Visualisation graphique</h3><br>
+                    <p class="text">
+                        Des outils interactifs pour représenter visuellement les données et comparer les performances des modèles.
+                    </p>
+                </div>
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Algorithmes intégrés</h3><br>
+                    <p class="text">
+                        Une bibliothèque de modèles de machine learning (régression, k-means, random forests, réseaux de neurones, etc.) prêts à être utilisés pour simplifier l’analyse.
+                    </p>
+                </div>
+                <!-- Add the new section here -->
+                <div style="flex: 1; max-width: 30%; padding: 10px; text-align: left;">
+                    <h3 class="bold-text">Exportation simplifiée</h3><br>
+                    <p class="text">
+                        Des fonctionnalités pour exporter les résultats, les modèles entraînés et les visualisations pour un partage ou une utilisation future.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    
-    
-</body>
+    </body>
 </html>

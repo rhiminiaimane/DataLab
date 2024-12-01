@@ -2,79 +2,11 @@
 {% load static %}
 
 {% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/visualize.css' %}">
     <h1>Visualize Dataset</h1>
-
-    <style>
-        /* Style the form */
-        form {
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-wrap: nowrap; /* Prevent wrapping */
-            gap: 20px;
-            align-items: center; /* Vertically center items */
-        }
-
-        /* Style the form labels and select elements */
-        label {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-right: 10px; /* Space between label and input */
-            display: inline-block;
-            color: #333;
-        }
-
-        select {
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            transition: border-color 0.3s ease;
-            width: auto; /* Adjust width */
-            min-width: 120px; /* Ensure select fields aren't too small */
-        }
-
-        select:focus {
-            border-color: #C51919;
-            outline: none;
-        }
-
-        /* Style the submit button */
-        button[type="submit"] {
-            padding: 10px;
-            background-color: #C51919;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-left: auto; /* Push button to the far right */
-        }
-
-        button[type="submit"]:hover {
-            background-color: #f45b5b;
-        }
-
-        /* Style the visualization container */
-        .card {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: #333;
-        }
-    </style>
 
     <!-- Visualization Form -->
     <form method="POST">
@@ -108,7 +40,7 @@
     {% if plot_div %}
         <div class="card">
             <h3>Visualization</h3>
-            <div>{{ plot_div|safe }}</div>  <!-- Render the Plotly plot -->
+            <div>{{ plot_div|safe }}</div>
         </div>
     {% endif %}
 {% endblock %}
